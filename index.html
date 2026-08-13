@@ -3,148 +3,329 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IMARY BLANCHE</title>
+  <title>Imary Blanche</title>
   <style>
+    :root {
+      --bg-color: #fdf0f4;
+      --card-bg: #ffffff;
+      --text-color: #4a3b40;
+      --accent-color: #e88ca8;
+      --accent-soft: #f7d6e0;
+      --shadow: 0 10px 30px rgba(232, 140, 168, 0.15);
+    }
+
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
     body {
-      background-color: #000080;
-      background-image: radial-gradient(#ff00ff 15%, transparent 16%), radial-gradient(#00ffff 15%, transparent 16%);
-      background-size: 60px 60px;
-      background-position: 0 0, 30px 30px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
       min-height: 100vh;
-      overflow: hidden;
-      font-family: "Comic Sans MS", "Chalkboard SE", "Comic Neue", sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem 1.5rem;
     }
 
-    .marquee-container {
-      background: #ffff00;
-      color: #ff0000;
-      border-top: 4px ridge #ffffff;
-      border-bottom: 4px ridge #ffffff;
-      font-size: 1.8rem;
-      font-weight: bold;
-      padding: 5px 0;
-      position: fixed;
-      top: 0;
+    .container {
+      max-width: 1000px;
       width: 100%;
-      z-index: 9999;
     }
 
-    .bottom-marquee {
-      top: auto;
-      bottom: 0;
-      background: #00ff00;
-      color: #000000;
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
     }
 
-    .meme-space {
-      position: relative;
-      width: 100vw;
-      height: 100vh;
+    header h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #3b2c31;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.5rem;
     }
 
-    .floating-img {
-      position: absolute;
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 5px dashed #ff00ff;
-      box-shadow: 0 0 15px #00ffff;
+    header p {
+      color: #8c737c;
+      font-size: 1.05rem;
+    }
+
+    .heart {
+      color: var(--accent-color);
+      display: inline-block;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
     }
 
-    .img-1 {
-      top: 15%;
-      left: 10%;
-      animation: chaos-1 3s infinite linear alternate;
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(232, 140, 168, 0.3);
     }
 
-    .img-2 {
-      top: 20%;
-      right: 15%;
-      border-color: #00ff00;
-      animation: chaos-2 2.5s infinite ease-in-out alternate-reverse;
+    .image-wrapper {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
     }
 
-    .img-3 {
-      top: 55%;
-      left: 20%;
-      border-color: #ffff00;
-      animation: chaos-3 1.8s infinite bounce alternate;
+    .image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
     }
 
-    .img-4 {
-      top: 50%;
-      right: 25%;
-      border-color: #ff0000;
-      animation: chaos-1 4s infinite linear alternate-reverse;
+    .card:hover .image-wrapper img {
+      transform: scale(1.05);
     }
 
-    .img-5 {
-      top: 35%;
-      left: 45%;
-      border-color: #00ffff;
-      animation: chaos-2 3.2s infinite ease-in-out alternate;
+    .card-text {
+      padding: 1.2rem;
+      text-align: center;
     }
 
-    @keyframes chaos-1 {
-      0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-      50% { transform: translate(120px, -80px) rotate(180deg) scale(1.3); }
-      100% { transform: translate(-100px, 100px) rotate(360deg) scale(0.7); }
+    .card-text h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #3b2c31;
+      margin-bottom: 0.25rem;
     }
 
-    @keyframes chaos-2 {
-      0% { transform: translate(0, 0) rotate(0deg) scale(0.8); }
-      33% { transform: translate(-150px, 90px) rotate(-120deg) scale(1.4); }
-      66% { transform: translate(100px, -120px) rotate(240deg) scale(0.9); }
-      100% { transform: translate(-50px, -50px) rotate(360deg) scale(1.2); }
+    .card-text p {
+      font-size: 0.9rem;
+      color: #8c737c;
     }
 
-    @keyframes chaos-3 {
-      0% { transform: translateY(0) scaleX(1) scaleY(1) rotate(0deg); }
-      25% { transform: translateY(-120px) scaleX(1.3) scaleY(0.7) rotate(45deg); }
-      50% { transform: translateY(0) scaleX(0.8) scaleY(1.2) rotate(-45deg); }
-      75% { transform: translateY(-60px) scaleX(1.1) scaleY(0.9) rotate(180deg); }
-      100% { transform: translateY(0) scaleX(1) scaleY(1) rotate(360deg); }
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background-color: rgba(74, 59, 64, 0.85);
+      backdrop-filter: blur(8px);
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
 
-    .floating-img:hover {
-      animation: wild-spin 0.2s infinite linear !important;
+    .modal.active {
+      display: flex;
+      opacity: 1;
     }
 
-    @keyframes wild-spin {
-      from { transform: rotate(0deg) scale(1.6); }
-      to { transform: rotate(360deg) scale(1.6); }
+    .modal-content {
+      background: #ffffff;
+      border-radius: 24px;
+      max-width: 500px;
+      width: 100%;
+      overflow: hidden;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      position: relative;
+      animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-img-wrapper {
+      width: 100%;
+      max-height: 70vh; 
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #000; 
+    }
+
+    .modal-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      max-height: 70vh;
+      object-fit: contain; 
+    }
+
+    .modal-body {
+      padding: 1.8rem;
+    }
+
+    .modal-body h2 {
+      font-size: 1.4rem;
+      color: #3b2c31;
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-body p {
+      font-size: 1rem;
+      color: #6b525b;
+      line-height: 1.5;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(255, 255, 255, 0.8);
+      border: none;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: #4a3b40;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .close-btn:hover {
+      background: #ffffff;
+    }
+
+    footer {
+      margin-top: 4rem;
+      text-align: center;
+      color: #8c737c;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.8rem; }
+      body { padding: 2rem 1rem; }
     }
   </style>
 </head>
 <body>
 
-  <div class="marquee-container">
-    <marquee behavior="scroll" direction="left" scrollamount="15">
-      🔥 WELCOME TO THE MOST AMAZING WEBSITE EVER CREATED 🔥 AYLABYULAB 🔥
-    </marquee>
+  <div class="container">
+    
+    <header>
+      <h1>Imary Blanche <span class="heart">♥</span></h1>
+      <p>Just a gallery of my absolute favorite person in the world.</p>
+    </header>
+
+    <main class="gallery-grid">
+
+      <!-- Selfie 1 -->
+      <div class="card" onclick="openModal('1.jpg', 'My Favorite Face', 'How is it even possible for someone to be this gorgeous? You take my breath away every single day.')">
+        <div class="image-wrapper">
+          <img src="1.jpg" alt="Imary Selfie 1">
+        </div>
+        <div class="card-text">
+          <h3>Cutest Girl Ever</h3>
+          <p>Tap for a message ✨</p>
+        </div>
+      </div>
+
+      <!-- Selfie 2 -->
+      <div class="card" onclick="openModal('2.jpg', 'That Pretty Smile', 'Your smile literally brightens up my whole day. Never stop smiling, Imary!')">
+        <div class="image-wrapper">
+          <img src="2.jpg" alt="Imary Selfie 2">
+        </div>
+        <div class="card-text">
+          <h3>Unmatched Energy</h3>
+          <p>Tap for a message ✨</p>
+        </div>
+      </div>
+
+      <!-- Selfie 3 -->
+      <div class="card" onclick="openModal('3.jpg', 'Main Character', '10/10 visual right here. Absolutely stunning as always.')">
+        <div class="image-wrapper">
+          <img src="3.jpg" alt="Imary Selfie 3">
+        </div>
+        <div class="card-text">
+          <h3>Stunning as Always</h3>
+          <p>Tap for a message ✨</p>
+        </div>
+      </div>
+
+      <!-- Selfie 4 -->
+      <div class="card" onclick="openModal('4.jpg', 'My Safe Place', 'Seeing your photos never fails to put a huge smile on my face. You mean everything to me.')">
+        <div class="image-wrapper">
+          <img src="4.jpg" alt="Imary Selfie 4">
+        </div>
+        <div class="card-text">
+          <h3>Precious Smile</h3>
+          <p>Tap for a message ✨</p>
+        </div>
+      </div>
+
+      <!-- Selfie 5 -->
+      <div class="card" onclick="openModal('5.jpg', 'Forever My Favorite', 'Out of all the photos in the world, these selfies are my absolute favorites.')">
+        <div class="image-wrapper">
+          <img src="5.jpg" alt="Imary Selfie 5">
+        </div>
+        <div class="card-text">
+          <h3>100% Perfection</h3>
+          <p>Tap for a message ✨</p>
+        </div>
+      </div>
+
+    </main>
+
+    <footer>
+      <p>Made with love for Imary <span class="heart">♥</span></p>
+    </footer>
+
   </div>
 
-  <div class="meme-space">
-    <img src="1.jpg" class="floating-img img-1" alt="">
-    <img src="2.jpg" class="floating-img img-2" alt="">
-    <img src="3.jpg" class="floating-img img-3" alt="">
-    <img src="4.jpg" class="floating-img img-4" alt="">
-    <img src="5.jpg" class="floating-img img-5" alt="">
+  <div id="modal" class="modal" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="close-btn" onclick="closeModal()">&times;</button>
+      <div class="modal-img-wrapper">
+        <img id="modal-img" src="" alt="Popup Image">
+      </div>
+      <div class="modal-body">
+        <h2 id="modal-title"></h2>
+        <p id="modal-note"></p>
+      </div>
+    </div>
   </div>
 
-  <div class="marquee-container bottom-marquee">
-    <marquee behavior="scroll" direction="right" scrollamount="20">
-      ✨ IMARY BLANCHE LABLAB NG B0HAI K0H ✨
-    </marquee>
-  </div>
+  <script>
+    function openModal(imageSrc, title, note) {
+      document.getElementById('modal-img').src = imageSrc;
+      document.getElementById('modal-title').innerText = title;
+      document.getElementById('modal-note').innerText = note;
+      
+      const modal = document.getElementById('modal');
+      modal.classList.add('active');
+    }
+
+    function closeModal(event) {
+      const modal = document.getElementById('modal');
+      modal.classList.remove('active');
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+  </script>
 
 </body>
 </html>
