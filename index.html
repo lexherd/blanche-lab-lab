@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IMARY BLANCHE</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #000080;
+      background-image: radial-gradient(#ff00ff 15%, transparent 16%), radial-gradient(#00ffff 15%, transparent 16%);
+      background-size: 60px 60px;
+      background-position: 0 0, 30px 30px;
+      min-height: 100vh;
+      overflow: hidden;
+      font-family: "Comic Sans MS", "Chalkboard SE", "Comic Neue", sans-serif;
+    }
+
+    .marquee-container {
+      background: #ffff00;
+      color: #ff0000;
+      border-top: 4px ridge #ffffff;
+      border-bottom: 4px ridge #ffffff;
+      font-size: 1.8rem;
+      font-weight: bold;
+      padding: 5px 0;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 9999;
+    }
+
+    .bottom-marquee {
+      top: auto;
+      bottom: 0;
+      background: #00ff00;
+      color: #000000;
+    }
+
+    .meme-space {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .floating-img {
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px dashed #ff00ff;
+      box-shadow: 0 0 15px #00ffff;
+      cursor: pointer;
+    }
+
+    .img-1 {
+      top: 15%;
+      left: 10%;
+      animation: chaos-1 3s infinite linear alternate;
+    }
+
+    .img-2 {
+      top: 20%;
+      right: 15%;
+      border-color: #00ff00;
+      animation: chaos-2 2.5s infinite ease-in-out alternate-reverse;
+    }
+
+    .img-3 {
+      top: 55%;
+      left: 20%;
+      border-color: #ffff00;
+      animation: chaos-3 1.8s infinite bounce alternate;
+    }
+
+    .img-4 {
+      top: 50%;
+      right: 25%;
+      border-color: #ff0000;
+      animation: chaos-1 4s infinite linear alternate-reverse;
+    }
+
+    .img-5 {
+      top: 35%;
+      left: 45%;
+      border-color: #00ffff;
+      animation: chaos-2 3.2s infinite ease-in-out alternate;
+    }
+
+    @keyframes chaos-1 {
+      0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+      50% { transform: translate(120px, -80px) rotate(180deg) scale(1.3); }
+      100% { transform: translate(-100px, 100px) rotate(360deg) scale(0.7); }
+    }
+
+    @keyframes chaos-2 {
+      0% { transform: translate(0, 0) rotate(0deg) scale(0.8); }
+      33% { transform: translate(-150px, 90px) rotate(-120deg) scale(1.4); }
+      66% { transform: translate(100px, -120px) rotate(240deg) scale(0.9); }
+      100% { transform: translate(-50px, -50px) rotate(360deg) scale(1.2); }
+    }
+
+    @keyframes chaos-3 {
+      0% { transform: translateY(0) scaleX(1) scaleY(1) rotate(0deg); }
+      25% { transform: translateY(-120px) scaleX(1.3) scaleY(0.7) rotate(45deg); }
+      50% { transform: translateY(0) scaleX(0.8) scaleY(1.2) rotate(-45deg); }
+      75% { transform: translateY(-60px) scaleX(1.1) scaleY(0.9) rotate(180deg); }
+      100% { transform: translateY(0) scaleX(1) scaleY(1) rotate(360deg); }
+    }
+
+    .floating-img:hover {
+      animation: wild-spin 0.2s infinite linear !important;
+    }
+
+    @keyframes wild-spin {
+      from { transform: rotate(0deg) scale(1.6); }
+      to { transform: rotate(360deg) scale(1.6); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="marquee-container">
+    <marquee behavior="scroll" direction="left" scrollamount="15">
+      🔥 WELCOME TO THE MOST AMAZING WEBSITE EVER CREATED 🔥 AYLABYULAB 🔥
+    </marquee>
+  </div>
+
+  <div class="meme-space">
+    <img src="D:/Account Settings Adaguplo/Desktop/iCloud Photos/iCloud Photos/1.jpg" class="floating-img img-1" alt="">
+    <img src="D:/Account Settings Adaguplo/Desktop/iCloud Photos/iCloud Photos/2.jpg" class="floating-img img-2" alt="">
+    <img src="D:/Account Settings Adaguplo/Desktop/iCloud Photos/iCloud Photos/3.jpg" class="floating-img img-3" alt="">
+    <img src="D:/Account Settings Adaguplo/Desktop/iCloud Photos/iCloud Photos/4.jpg" class="floating-img img-4" alt="">
+    <img src="D:/Account Settings Adaguplo/Desktop/iCloud Photos/iCloud Photos/5.jpg" class="floating-img img-5" alt="">
+  </div>
+
+  <div class="marquee-container bottom-marquee">
+    <marquee behavior="scroll" direction="right" scrollamount="20">
+      ✨ IMARY BLANCHE LABLAB NG B0HAI K0H ✨
+    </marquee>
+  </div>
+
+</body>
+</html>
